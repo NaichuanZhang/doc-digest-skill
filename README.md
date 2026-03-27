@@ -75,7 +75,7 @@ graph TD
         subgraph assets/server-template/
             G[server.py<br/>FastAPI endpoints]
             H[agent.py<br/>Strands agent factory]
-            I[tools.py<br/>@tool definitions]
+            I[tools.py<br/>tool definitions]
             J[models.py<br/>Pydantic schemas]
             K[requirements.txt]
         end
