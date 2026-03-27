@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- === DOCUMENT TITLE === -->
+  <!-- REPLACE: Set the document title -->
+  <title>Document Title — Doc Digest</title>
+
+  <!-- === FONT LINKS === -->
+  <!-- REPLACE: Add Google Fonts or Fontshare links matching the style preset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* === STYLE VARIABLES === */
+    /* REPLACE: Override :root variables below to match the chosen style preset.
+       The defaults provide a warm editorial look. Customize colors, fonts, etc. */
+
+    /* === BASE STYLES (from styles.css — inlined) === */
+    /* INLINE: Read assets/webapp-template/styles.css and paste its full contents here */
+  </style>
+</head>
+<body>
+
+  <!-- Mobile ToC toggle -->
+  <button id="toc-toggle" aria-label="Toggle table of contents">&#9776;</button>
+
+  <div class="app-layout">
+
+    <!-- === TABLE OF CONTENTS === -->
+    <nav class="toc-sidebar" id="toc-sidebar">
+      <div class="toc-header">Contents</div>
+      <!-- GENERATE: Create a .toc-link for each section from document_data.json.
+           Example:
+           <a href="#executive-summary" class="toc-link" data-level="2">Executive Summary</a>
+           <a href="#market-analysis" class="toc-link" data-level="2">Market Analysis</a>
+      -->
+    </nav>
+
+    <!-- === MAIN CONTENT === -->
+    <main class="content-area">
+
+      <!-- === DOCUMENT HEADER === -->
+      <header class="doc-header">
+        <!-- REPLACE: Fill in document title, author, date from metadata -->
+        <h1 class="doc-title">Document Title</h1>
+        <p class="doc-meta">By Author Name &middot; Date &middot; X sections</p>
+      </header>
+
+      <!-- === SECTIONS === -->
+      <!-- GENERATE: For each section in document_data.json, create:
+
+           <section class="doc-section" id="section-slug" data-section-id="section-slug">
+             <h2>Section Title</h2>
+             <div class="section-content">
+               Render the section's markdown content as HTML here.
+               Convert markdown headings, lists, code blocks, tables, etc.
+             </div>
+           </section>
+
+           Use h3 for level-3 sections instead of h2.
+      -->
+
+    </main>
+
+  </div>
+
+  <!-- === CHAT PANEL === -->
+  <div id="chat-panel">
+    <div class="chat-header">
+      <h3>Chat with this document</h3>
+      <button class="chat-close-btn" id="chat-close">&times;</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div class="chat-input-area">
+      <textarea id="chat-input" rows="1" placeholder="Ask about this document..."></textarea>
+      <button id="chat-send">Send</button>
+    </div>
+  </div>
+
+  <!-- Chat toggle FAB -->
+  <button id="chat-toggle" aria-label="Open chat">&#128172;</button>
+
+  <!-- Text selection popup -->
+  <div id="selection-popup">
+    <button class="popup-btn" id="popup-ask">Ask</button>
+    <button class="popup-btn" id="popup-factcheck">Fact check</button>
+    <button class="popup-btn" id="popup-summarize">Summarize</button>
+  </div>
+
+  <!-- === SERVER URL CONFIG === -->
+  <!-- REPLACE: Set the chat server URL (default: http://localhost:8765) -->
+  <script>window.DOC_DIGEST_SERVER_URL = 'http://localhost:8765';</script>
+
+  <!-- === CHAT JS (from chat.js — inlined) === -->
+  <script>
+    /* INLINE: Read assets/webapp-template/chat.js and paste its full contents here */
+  </script>
+
+  <!-- Section reveal observer -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.doc-section');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      sections.forEach((s) => observer.observe(s));
+    });
+  </script>
+
+</body>
+</html>
